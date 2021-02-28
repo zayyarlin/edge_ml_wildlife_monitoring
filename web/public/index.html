@@ -3,15 +3,12 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Global Wildlife Listening Project</title>
-
-    
+    <title>Global Wildlife Listening Project</title> 
     <style>
-      
     </style>
   </head>
   <body>
-    <div id="detections">
+    <div id="events">
       
     </div>
     <!-- The core Firebase JS SDK is always required and must be listed first -->
@@ -26,8 +23,8 @@
 
     <script>
       
-      function displayDetection(animal, timestamp) {
-        return `<div> ${animal} ${timestamp} </div>`;
+      function displayEvents(event_type) {
+        return `<div> ${event_type} </div>`;
       }
       
       // Your web app's Firebase configuration
@@ -43,18 +40,14 @@
       firebase.initializeApp(firebaseConfig);
 
       var db = firebase.firestore();
-      db.collection("detections").onSnapshot((changeDoc) => {
-        console.log("change detected")
+      db.collection("events").onSnapshot((changeDoc) => {
         var li = "";
         for (doc of changeDoc.docs) {
-          li += displayDetection(doc.data().type, doc.data().detection_time)
+          li += displayEvents(doc.data().type)
         }
-        $( "#detections" ).html(li);
+        $("#events").html(li);
         console.log(changeDoc.docs);
       });
-
-
-
     </script>
   </body>
 </html>

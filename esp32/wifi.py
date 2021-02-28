@@ -16,9 +16,6 @@ url = "https://firestore.googleapis.com/v1/projects/global-wildlife-listening/da
 dataStr = """
 {
   "fields": {
-    "detection_time": {
-      "timestampValue": "2021-02-13T13:21:00Z"
-    },
     "type": {
       "stringValue": "mcu test 3"
     }
